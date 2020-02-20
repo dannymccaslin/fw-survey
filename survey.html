@@ -24,8 +24,7 @@
                  $('.next-button').click(function() {
                      if( $(this).parent().has('.survey-question-option')) { 
                      replies[$(this).parent().attr('id')] = $(this).parent().contents('.survey-question-option:checked').val();
-                  }  
-                   if ($(this).parent().has("textarea")) {
+                  }  else if ($(this).parent().has("textarea")) {
                          replies[$(this).parent().attr('id')] = $(this).parent().contents("textarea").val();
                      }
                     
@@ -112,10 +111,7 @@
                     <label for="facebook" class="survey-question-option-label">Facebook</label><br>
                     <input type="checkbox" id="instagram" name="instagram" value="Instagram">
                     <label for="instagram" class="survey-question-option-label">Instagram</label><br>
-                    <input type="checkbox" id="snapchat" name="snapchat" value="Snapchat">
-                    <label for="snapchat" class="survey-question-option-label">Snapchat</label><br>
-                    <input type="checkbox" id="tumblr" name="tumblr" value="Tumblr">
-                    <label for="tumblr" class="survey-question-option-label">Tumblr</label><br>
+                    
 
                     <p class="survey-question"> Do you follow Frederick Water on any of the following Social Media sites?</p>
                     <input type="checkbox" id="twitter2" name="twitter" value="Twitter">
@@ -126,10 +122,6 @@
                     <p class="survey-question"> Would you like to see up on other social media sites?</p>
                     <input type="checkbox" id="instagram2" name="instagram" value="Instagram">
                     <label for="instagram2" class="survey-question-option-label">Instagram</label><br>
-                    <input type="checkbox" id="snapchat2" name="snapchat" value="Snapchat">
-                    <label for="snapchat2" class="survey-question-option-label">Snapchat</label><br>
-                    <input type="checkbox" id="tumblr2" name="tumblr" value="Tumblr">
-                    <label for="tumblr2" class="survey-question-option-label">Tumblr</label><br>
                     <input type="checkbox" id="youtube" name="youtube" value="YouTube">
                     <label for="youtube" class="survey-question-option-label">YouTube</label><br>
                     <br>
@@ -161,7 +153,14 @@
                         <option value="rental">Rental Property</option>
                         <option value="residential">Residential</option>
                     </select><br>
+                    <br>
+                    <label for="paperless">Would you be interested in a paperless billing option if it was available?</label>
+                    <select id="paperless">
+                        <option value="yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                     <input type="button" id="demo-next" value="Next">
+                    
                 </div>
 
                     
