@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FrederickWater.com Usability Survey</title>  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                
+                replies = {}
+                $('input[type=radio]').click(function() {
+                    if($('#other').is(':checked')) {
+                        $('#other-fill-reason').removeAttr('hidden');
+                    } else {
+                        $('#other-fill-reason').attr('hidden','');
+                    }
+                    if($('#other2').is(':checked')) {
+                        $('#other-fill-wish').removeAttr('hidden');
+                    } else {
+                        $('#other-fill-wish').attr('hidden','');
+                    }
+                 });
+
+                 $('.next-button').click(function() {
+                     if( $(this).parent().has('.survey-question-option')) { 
+                     replies[$(this).parent().attr('id')] = $(this).parent().contents('.survey-question-option:checked').val();
+                  }  else if ($(this).parent().has("textarea")) {
+                         replies[$(this).parent().attr('id')] = $(this).parent().contents("textarea").val();
+                     }
+                    
+                    console.log(replies);
+                    $(this).parent().attr('hidden','');
+                    $(this).parent().next().removeAttr('hidden');
+                 });
+                
+            });
+        </script>
+    </head>
+    <body>
+        <main>
+            <header>
+                <h1>Frederick Water Website Usability Survey</h1>
+                <p>We want to make improvements to our website, but those improvements are meaningless if they don't improve the user experience. We want to learn why you visit 
+                    frederickwater.com, whay you think works well, and what you think we need to improve. This survey will collect no personal information but may ask questions about demographics
+                    that can't be tied to any particular account or account holder, such as whether you own or rent your home and whether you have multiple accounts with us. We hope to use the 
+                    information gained from this survey to streamline our website and social media presence to make it easier for you to get to the information and services you need.
+                </p>
+            </header>
+            <article>
+                <form id="survey">
+                    <div id="reason">
+                        <p class="survey-question">What is the primary reason you visit frederickwater.com? </p>
+                    <input type="radio" id="bill" name="reason" class="survey-question-option" value="bill">
+                    <label for="bill" class="survey-question-option-label">To view or pay my bill online</label><br>
+                    <input type="radio" id="outage" name="reason" class="survey-question-option" value="outage">
+                    <label for="outage" class="survey-question-option-label">To view or report an outage</label><br>
+                    <input type="radio" id="start" name="reason" class="survey-question-option" value="start">
+                    <label for="start" class="survey-question-option-label">To get information about starting or stopping services</label><br>
+                    <input type="radio" id="hours" name="reason" class="survey-question-option" value="hours">
+                    <label for="hours" class="survey-question-option-label">To find Frederick Waster's business hours</label><br>
+                    <input type="radio" id="board" name="reason" class="survey-question-option" value="board">
+                    <label for="board" class="survey-question-option-label">To get information about Frederick Water's governance or board meetings</label><br>
+                    <input type="radio" id="devel" name="reason" class="survey-question-option" value="devel">
+                    <label for="devel" class="survey-question-option-label">To get information about new water or wastewater lines for new development</label><br>
+                    <input type="radio" id="other" name="reason" class="survey-question-option" value="other">
+                    <label for="other" class="survey-question-option-label">Other</label><br>
+                    <div id="other-fill-reason" hidden>
+                        <label for="othertext-reason" class="survey-question-option-label" >Please specify: </label>
+                        <input type="text" class="survey-question-other" id="othertext-reason" >
+                    </div>
+                    <input type="button" class="next-button" id="reason-next" value="Next">
+                    </div>
+
+                    <div id="wish" hidden>
+                    <p class="survey-question">What do you wish frederickwater.com did better?</p>
+                    <input type="radio" id="newstart" name="wish" class="survey-question-option" value="newstart">
+                    <label for="newstart" class="survey-question-option-label">Allow me to pay deposit while starting new service</label><br>
+                    <input type="radio" id="outinfo" name="wish" class="survey-question-option" value="outinfo">
+                    <label for="outinfo" class="survey-question-option-label">Provide easier-to-find information about outages</label><br>
+                    <input type="radio" id="startstop" name="wish" class="survey-question-option" value="startstop">
+                    <label for="startstop" class="survey-question-option-label">Make it easier to start and stop services</label><br>
+                    <input type="radio" id="request" name="wish" class="survey-question-option" value="request">
+                    <label for="request" class="survey-question-option-label">Make it easier to request maintenance for existing service</label><br>
+                    <input type="radio" id="chat" name="wish" class="survey-question-option" value="chat">
+                    <label for="chat" class="survey-question-option-label">Let me talk to customer service online</label><br>
+                    <input type="radio" id="other2" name="wish" class="survey-question-option" value="other2">
+                    <label for="other2" class="survey-question-option-label">Other</label><br>
+                    <div id="other-fill-wish" hidden>
+                        <label for="othertext-wish" class="survey-question-option-label" >Please specify: </label>
+                        <input type="text" class="survey-question-other" id="othertext-wish" >
+                    </div>
+                    <input type="button" class="next-button" id="wish-next" value="Next">
+                    </div>
+
+                    <div id="dislike" hidden>
+                    <p class="survey-question">What do you dislike about frederickwater.com?</p>
+                    <textarea id="dislike-text" class="like-dislike" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea><br>
+                    <input type="button" class="next-button" id="dislike-next" value="Next">
+                    </div>
+                    <div id="like" hidden>
+                    <p class="survey-question">What do you like about frederickwater.com?</p>
+                    <textarea id="like-text" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea><br>
+                    <input type="button" class="next-button" id="like-next" value="Next">
+                    </div>
+
+                    <div id="social-q" hidden>
+                    <p class="survey-question"> Do you use any of the following Social Media sites?</p>
+                    <input type="checkbox" id="twitter" name="twitter" value="Twitter">
+                    <label for="twitter" class="survey-question-option-label">Twitter</label><br>
+                    <input type="checkbox" id="facebook" name="facebook" value="Facebook">
+                    <label for="facebook" class="survey-question-option-label">Facebook</label><br>
+                    <input type="checkbox" id="instagram" name="instagram" value="Instagram">
+                    <label for="instagram" class="survey-question-option-label">Instagram</label><br>
+                    <input type="checkbox" id="snapchat" name="snapchat" value="Snapchat">
+                    <label for="snapchat" class="survey-question-option-label">Snapchat</label><br>
+                    <input type="checkbox" id="tumblr" name="tumblr" value="Tumblr">
+                    <label for="tumblr" class="survey-question-option-label">Tumblr</label><br>
+
+                    <p class="survey-question"> Do you follow Frederick Water on any of the following Social Media sites?</p>
+                    <input type="checkbox" id="twitter2" name="twitter" value="Twitter">
+                    <label for="twitter2" class="survey-question-option-label">Twitter</label><br>
+                    <input type="checkbox" id="facebook2" name="facebook" value="Facebook">
+                    <label for="facebook2" class="survey-question-option-label">Facebook</label><br>
+                    
+                    <p class="survey-question"> Would you like to see up on other social media sites?</p>
+                    <input type="checkbox" id="instagram2" name="instagram" value="Instagram">
+                    <label for="instagram2" class="survey-question-option-label">Instagram</label><br>
+                    <input type="checkbox" id="snapchat2" name="snapchat" value="Snapchat">
+                    <label for="snapchat2" class="survey-question-option-label">Snapchat</label><br>
+                    <input type="checkbox" id="tumblr2" name="tumblr" value="Tumblr">
+                    <label for="tumblr2" class="survey-question-option-label">Tumblr</label><br>
+                    <input type="checkbox" id="youtube" name="youtube" value="YouTube">
+                    <label for="youtube" class="survey-question-option-label">YouTube</label><br>
+                    <br>
+                    <input type="button" class="next-button" id="social-next" value="Next">
+                    </div>
+                    
+                    <div id="demo" hidden>
+                    <label for="age-range">Choose your age range:</label><br>
+                    <select id="age-range">
+                        <option value="18-24">18-24</option>
+                        <option value="25-32">25-32</option>
+                        <option value="33-40">33-40</option>
+                        <option value="41-48">41-48</option>
+                        <option value="49-55">48-55</option>
+                        <option value="56-65">56-65</option>
+                        <option value="65+">65 +</option>
+                    </select><br>
+                    <br>
+
+                    <label for="rent-own">Do your rent or own the property where you receive services from Frederick Water?</label><br>
+                    <select id="rent-own">
+                        <option value="rent">Rent</option>
+                        <option value="own">Own</option>
+                    </select><br>
+                    <br>
+                    <label for="comm-res">Is this a commercial property, rental property, or residential service?</label><br>
+                    <select id="comm-res">
+                        <option value="commercial">Commercial</option>
+                        <option value="rental">Rental Property</option>
+                        <option value="residential">Residential</option>
+                    </select><br>
+                    <input type="button" id="demo-next" value="Next">
+                </div>
+
+                    
+                </form>
+            </article>
+        </main>
+
+    </body>
+</html>
