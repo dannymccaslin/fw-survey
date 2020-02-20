@@ -24,7 +24,8 @@
                  $('.next-button').click(function() {
                      if( $(this).parent().has('.survey-question-option')) { 
                      replies[$(this).parent().attr('id')] = $(this).parent().contents('.survey-question-option:checked').val();
-                  }  else if ($(this).parent().has("textarea")) {
+                  }  
+                   if ($(this).parent().has("textarea")) {
                          replies[$(this).parent().attr('id')] = $(this).parent().contents("textarea").val();
                      }
                     
