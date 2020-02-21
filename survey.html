@@ -38,14 +38,23 @@
                         }
                     } else if (parent.find('.like-dislike'). length > 0) { //If this is a textarea, get the value of the textarea
                         replies[parent.attr('id')] = parent.find('.like-dislike').val();
-                    } 
-                    // foreach checkbox in the div
-                    // get the value of the checkbox and assign it to the Key
-                    // if the checkbox is checked, value is y
-                    // otherwise, value is n
+                    } else if (parent.attr('id') === 'social-q') {
+                        $.each($('.smcb'), function() {
+                            cbid = $(this).attr('id');
+                            if ($(this).prop('checked')) {
+                                replies[cbid] = 'Y';
+                            } else {
+                            replies[cbid] = 'N';
+                            }
+                        });
+                    } else if (parent.attr('id') === 'demo') {
+                        $.each($('select'), function() {
+                            selid = $(this).attr('id');
+                            replies[selid] = $(this).val();
+                        })
+                }
 
 
-                    console.log(parent);
                     console.log(replies);
                     $(this).parent().attr('hidden','');
                     $(this).parent().next().removeAttr('hidden');
@@ -123,24 +132,24 @@
 
                     <div id="social-q" hidden>
                     <p class="survey-question"> Do you use any of the following Social Media sites?</p>
-                    <input type="checkbox" id="twitter" name="twitter" value="Twitter">
+                    <input type="checkbox" id="twitter" class="smcb" name="twitter" value="Twitter">
                     <label for="twitter" class="survey-question-option-label">Twitter</label><br>
-                    <input type="checkbox" id="facebook" name="facebook" value="Facebook">
+                    <input type="checkbox" id="facebook" class="smcb" name="facebook" value="Facebook">
                     <label for="facebook" class="survey-question-option-label">Facebook</label><br>
-                    <input type="checkbox" id="instagram" name="instagram" value="Instagram">
+                    <input type="checkbox" id="instagram" class="smcb" name="instagram" value="Instagram">
                     <label for="instagram" class="survey-question-option-label">Instagram</label><br>
                     
 
                     <p class="survey-question"> Do you follow Frederick Water on any of the following Social Media sites?</p>
-                    <input type="checkbox" id="twitter2" name="twitter" value="Twitter">
+                    <input type="checkbox" id="twitter2" class="smcb" name="twitter" value="Twitter">
                     <label for="twitter2" class="survey-question-option-label">Twitter</label><br>
-                    <input type="checkbox" id="facebook2" name="facebook" value="Facebook">
+                    <input type="checkbox" id="facebook2" class="smcb" name="facebook" value="Facebook">
                     <label for="facebook2" class="survey-question-option-label">Facebook</label><br>
                     
                     <p class="survey-question"> Would you like to see up on other social media sites?</p>
-                    <input type="checkbox" id="instagram2" name="instagram" value="Instagram">
+                    <input type="checkbox" id="instagram2" class="smcb" name="instagram" value="Instagram">
                     <label for="instagram2" class="survey-question-option-label">Instagram</label><br>
-                    <input type="checkbox" id="youtube" name="youtube" value="YouTube">
+                    <input type="checkbox" id="youtube" class="smcb" name="youtube" value="YouTube">
                     <label for="youtube" class="survey-question-option-label">YouTube</label><br>
                     <br>
                     <input type="button" class="next-button" id="social-next" value="Next">
@@ -177,7 +186,7 @@
                         <option value="yes">Yes</option>
                         <option value="No">No</option>
                     </select>
-                    <input type="button" id="demo-next" value="Next">
+                    <input type="button" class='next-button' id="demo-next" value="Next">
                     
                 </div>
 
