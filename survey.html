@@ -11,9 +11,28 @@
                      
                  };
 
-                 function stripchar(str) {
-                     str = str.replace(/[&\/\\#+()$~%'":;*?<>{}]/g, '');
+                 function stripchar(str) { //strip and replace characters that we don't want in text fields
+                     str = str.replace(/["']/g, '\\"');
+                     str = str.replace(/[&/#+()$~%:;*?<>{}]/g, ' ');
+                     return str;
                  }
+
+                 $('.textfield').keyup(function() {
+                    var mlen = parseInt($(this).attr('maxlength'));
+                    var wlen = mlen/5;
+                    console.log(typeof(mlen));
+                     var len= this.value.length;
+                     if (this >=mlen) {
+                         this.value = this.value.substring(0,mlen);
+                     } else {
+                         $(this).next().text(mlen-len + '/' + mlen);
+                         if (len >= (mlen - wlen)) {
+                             $(this).next().toggleClass('.warn');
+                         }
+                     }
+                 });
+                 
+
                 $('input[type=radio]').click(function() {
                     if($('#other').is(':checked')) {
                         $('#other-fill-reason').removeAttr('hidden');
@@ -31,13 +50,13 @@
                     var parent = $(this).parent();
                     if ( parent.find('.survey-question-option').length > 0) { // If this is a radio button, get the value of the button that is checked
                         
-                        if   (parent.find('.survey-question-option:checked').val() === 'other') { //If 'ither' is checked, get the value of the 'survey-question-other' field
-                            replies[parent.attr('id')] = parent.find('.other-fill').find('.survey-question-other').val();
+                        if   (parent.find('.survey-question-option:checked').val() === 'other') { //If 'other' is checked, get the value of the 'survey-question-other' field
+                            replies[parent.attr('id')] = stripchar(parent.find('.other-fill').find('.survey-question-other').val());
                         } else {
                             replies[parent.attr('id')] = parent.find('.survey-question-option:checked').val();
                         }
                     } else if (parent.find('.like-dislike'). length > 0) { //If this is a textarea, get the value of the textarea
-                        replies[parent.attr('id')] = parent.find('.like-dislike').val();
+                        replies[parent.attr('id')] = stripchar(parent.find('.like-dislike').val());
                     } else if (parent.attr('id') === 'social-q') {
                         $.each($('.smcb'), function() {
                             cbid = $(this).attr('id');
@@ -47,20 +66,27 @@
                             replies[cbid] = 'N';
                             }
                         });
-                    } else if (parent.attr('id') === 'demo') {
-                        $.each($('select'), function() {
-                            selid = $(this).attr('id');
-                            replies[selid] = $(this).val();
-                        })
-                }
-
-
+                    } 
+                
                     console.log(replies);
                     $(this).parent().attr('hidden','');
                     $(this).parent().next().removeAttr('hidden');
                  });
+                 $('#submit-button').click(function() {
+                    var parent = $(this).parent();
+                    if (parent.attr('id') === 'demo') {
+                        $.each($('select'), function() {
+                            selid = $(this).attr('id');
+                            replies[selid] = $(this).val();
+                        })
+                    }
+                    resjs = JSON.stringify(replies);
+                    console.log(resjs);
+                 });
                 
             });
+
+            
         </script>
     </head>
     <body>
@@ -93,7 +119,8 @@
                     <label for="other" class="survey-question-option-label">Other</label><br>
                     <div id="other-fill-reason" class="other-fill" hidden>
                         <label for="othertext-reason" class="survey-question-option-label" >Please specify: </label>
-                        <input type="text" class="survey-question-other" id="othertext-reason" >
+                        <input type="text" class="survey-question-other textfield" maxlength="75" id="othertext-reason" >
+                        <div class="charNum">75</div>
                     </div>
                     <input type="button" class="next-button" id="reason-next" value="Next">
                     </div>
@@ -114,19 +141,22 @@
                     <label for="other2" class="survey-question-option-label">Other</label><br>
                     <div id="other-fill-wish" class="other-fill" hidden>
                         <label for="othertext-wish" class="survey-question-option-label" >Please specify: </label>
-                        <input type="text" class="survey-question-other" id="othertext-wish" >
+                        <input type="text" class="survey-question-other textfield" maxlength="75" id="othertext-wish" >
+                        <div class="charNum">75</div>
                     </div>
                     <input type="button" class="next-button" id="wish-next" value="Next">
                     </div>
 
                     <div id="dislike" class="textbox" hidden>
                     <p class="survey-question">What do you dislike about frederickwater.com?</p>
-                    <textarea id="dislike-text" class="like-dislike" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea><br>
+                    <textarea id="dislike-text" class="like-dislike textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
+                    <div class="charNum">500</div>
                     <input type="button" class="next-button" id="dislike-next" value="Next">
                     </div>
                     <div id="like" class="textbox" hidden>
                     <p class="survey-question">What do you like about frederickwater.com?</p>
-                    <textarea id="like-text" class="like-dislike" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea><br>
+                    <textarea id="like-text" class="like-dislike textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
+                    <div class="charNum">500</div>
                     <input type="button" class="next-button" id="like-next" value="Next">
                     </div>
 
@@ -185,8 +215,8 @@
                     <select id="paperless">
                         <option value="yes">Yes</option>
                         <option value="No">No</option>
-                    </select>
-                    <input type="button" class='next-button' id="demo-next" value="Next">
+                    </select><br>
+                    <input type="button" class='submit-button' id="submit-button" value="Submit">
                     
                 </div>
 
