@@ -10,6 +10,20 @@ $(document).ready(function() {
         return str;
     }
 
+    function databaseUpdate(datastream) {
+        $.ajax({
+            method: 'POST',
+            url: '',
+            headers: {
+
+            },
+            data: JSON.stringify(datastream),
+            contentType: 'application/json',
+            
+        })
+        
+    }
+
     $('input[name=reason]').click(function() {
        console.log('Radio Button clicked')
        $('#reason-next').prop('disabled',false);
@@ -96,8 +110,7 @@ $(document).ready(function() {
                replies[selid] = $(this).val();
            })
        }
-       resjs = JSON.stringify(replies);
-       console.log(resjs);
+       databaseUpdate(replies);
     });
    
 });
