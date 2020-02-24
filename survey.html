@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>FrederickWater.com Usability Survey</title>  
-        <link href="surveystyle.css" rel="stylesheet" type="css\stylesheet">
+        <link href="surveystyle.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -18,10 +18,33 @@
                      return str;
                  }
 
+                 $('input[name=reason]').click(function() {
+                    console.log('Radio Button clicked')
+                    $('#reason-next').prop('disabled',false);
+                })
+
+                $('input[name=wish]').click(function() {
+                    console.log('Radio Button clicked')
+                    $('#wish-next').prop('disabled',false);
+                })
+
+                $('#dislike-text').keyup(function() {
+                    l = this.value.length;
+                    if (l >= 5) {
+                        $('#dislike-next').prop('disabled',false);
+                    }
+                });
+
+                $('#like-text').keyup(function() {
+                    l = this.value.length;
+                    if (l >= 5) {
+                        $('#like-next').prop('disabled',false);
+                    }
+                });
+
                  $('.textfield').keyup(function() {
                     var mlen = parseInt($(this).attr('maxlength'));
                     var wlen = mlen/5;
-                    console.log(typeof(mlen));
                      var len= this.value.length;
                      if (this >=mlen) {
                          this.value = this.value.substring(0,mlen);
@@ -99,12 +122,13 @@
                     that can't be tied to any particular account or account holder, such as whether you own or rent your home and whether you have multiple accounts with us. We hope to use the 
                     information gained from this survey to streamline our website and social media presence to make it easier for you to get to the information and services you need.
                 </p>
+                <div class="clear"></div>
             </header>
             <article>
                 <form id="survey">
                     <div id="reason" class='radio'>
                         <p class="survey-question">What is the primary reason you visit frederickwater.com? </p>
-                    <input type="radio" id="bill" name="reason" class="survey-question-option" value="bill">
+                    <input type="radio" id="bill" name="reason" class="survey-question-option" required value="bill">
                     <label for="bill" class="survey-question-option-label">To view or pay my bill online</label><br>
                     <input type="radio" id="outage" name="reason" class="survey-question-option" value="outage">
                     <label for="outage" class="survey-question-option-label">To view or report an outage</label><br>
@@ -123,12 +147,12 @@
                         <input type="text" class="survey-question-other textfield" maxlength="75" id="othertext-reason" >
                         <div class="charNum">75</div>
                     </div>
-                    <input type="button" class="next-button" id="reason-next" value="Next">
+                    <input type="button" class="next-button" id="reason-next" disabled="true" value="Next">
                     </div>
 
                     <div id="wish" class='radio' hidden>
                     <p class="survey-question">What do you wish frederickwater.com did better?</p>
-                    <input type="radio" id="newstart" name="wish" class="survey-question-option" value="newstart">
+                    <input type="radio" id="newstart" name="wish" class="survey-question-option" required value="newstart">
                     <label for="newstart" class="survey-question-option-label">Allow me to pay deposit while starting new service</label><br>
                     <input type="radio" id="outinfo" name="wish" class="survey-question-option" value="outinfo">
                     <label for="outinfo" class="survey-question-option-label">Provide easier-to-find information about outages</label><br>
@@ -145,20 +169,20 @@
                         <input type="text" class="survey-question-other textfield" maxlength="75" id="othertext-wish" >
                         <div class="charNum">75</div>
                     </div>
-                    <input type="button" class="next-button" id="wish-next" value="Next">
+                    <input type="button" class="next-button" id="wish-next" disabled value="Next">
                     </div>
 
                     <div id="dislike" class="textbox" hidden>
                     <p class="survey-question">What do you dislike about frederickwater.com?</p>
                     <textarea id="dislike-text" class="like-dislike textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
                     <div class="charNum">500</div>
-                    <input type="button" class="next-button" id="dislike-next" value="Next">
+                    <input type="button" class="next-button" id="dislike-next" disabled value="Next">
                     </div>
                     <div id="like" class="textbox" hidden>
                     <p class="survey-question">What do you like about frederickwater.com?</p>
                     <textarea id="like-text" class="like-dislike textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
                     <div class="charNum">500</div>
-                    <input type="button" class="next-button" id="like-next" value="Next">
+                    <input type="button" class="next-button" id="like-next" disabled value="Next">
                     </div>
 
                     <div id="social-q" hidden>

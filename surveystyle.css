@@ -1,5 +1,18 @@
 /* elements */
-
+header {
+    width: 100%;
+}
+header h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: block;
+    float: left;
+    margin: 10px;
+}
+header p {
+    float:left;
+    display: block;
+    width: 50%;
+}
 
 
 
@@ -7,12 +20,15 @@
 
 /* classes */
 .charNum {
-    text-align: left;
+    text-align: right;
     font-size: smaller;
     vertical-align: super;
 }
 .warn {
     color: red;
+}
+.clear {
+    clear:both;
 }
 
 
@@ -21,3 +37,9 @@
 
 
 /* IDs */
+#other-fill-reason{
+    width: 300px;
+}
+#othertext-wish {
+    width: 300px;
+}
