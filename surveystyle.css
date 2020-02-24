@@ -20,7 +20,8 @@ header p {
 
 /* classes */
 .charNum {
-    text-align: right;
+    display: inline;
+    align: left;
     font-size: smaller;
     vertical-align: super;
 }
@@ -30,6 +31,9 @@ header p {
 .clear {
     clear:both;
 }
+.next-button {
+    display: block;
+}
 
 
 
@@ -38,8 +42,9 @@ header p {
 
 /* IDs */
 #other-fill-reason{
-    width: 300px;
+    width: 280px;
 }
+
 #othertext-wish {
-    width: 300px;
+    width: 280px;
 }

@@ -79,8 +79,8 @@
                         } else {
                             replies[parent.attr('id')] = parent.find('.survey-question-option:checked').val();
                         }
-                    } else if (parent.find('.like-dislike'). length > 0) { //If this is a textarea, get the value of the textarea
-                        replies[parent.attr('id')] = stripchar(parent.find('.like-dislike').val());
+                    } else if (parent.find('.textfield'). length > 0) { //If this is a textarea, get the value of the textarea
+                        replies[parent.attr('id')] = stripchar(parent.find('.textfield').val());
                     } else if (parent.attr('id') === 'social-q') {
                         $.each($('.smcb'), function() {
                             cbid = $(this).attr('id');
@@ -209,6 +209,13 @@
                     <br>
                     <input type="button" class="next-button" id="social-next" value="Next">
                     </div>
+
+                    <div id="sm-info" class="textbox" hidden>
+                        <p class="survey-question">What kind of information would you like to receive from Frederick Water through social media?</p>
+                        <textarea id="sm-info-text" class="sm-info-textfield textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
+                        <div class="charNum">500</div>
+                        <input type="button" class="next-button" id="sm-info-next" value="Next">
+                        </div>
                     
                     <div id="demo" hidden>
                     <label for="agerange">Choose your age range:</label><br>
