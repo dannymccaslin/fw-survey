@@ -50,6 +50,10 @@ $(document).ready(function() {
        }
    });
 
+   $('#close').click( function() {
+        window.close();
+   });
+
     $('.textfield').keyup(function() {
        var mlen = parseInt($(this).attr('maxlength'));
        var wlen = mlen/5;
@@ -114,7 +118,7 @@ $(document).ready(function() {
        }
        databaseUpdate(replies);
        $(this).parent().attr('hidden','');
-       $(this).parent().next().removeAttr('hidden');
+       $('#thank').attr('hidden',false);
     });
    
 });

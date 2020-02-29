@@ -1,4 +1,12 @@
 /* elements */
+input[type=radio] {
+    padding-top: 30px;
+    margin-top: 10px;
+}
+input[type=button] {
+    margin: 5px;
+}
+
 header {
     width: 100%;
 }
@@ -47,4 +55,9 @@ header p {
 
 #othertext-wish {
     width: 280px;
+}
+#survey {
+  width: 80%;
+  padding: 70px;
+  margin: 0 0 40px 0;
 }
