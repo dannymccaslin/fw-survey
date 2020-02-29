@@ -13,8 +13,10 @@ $(document).ready(function() {
     function databaseUpdate(datastream) {
         $.ajax({
             method: 'POST',
-            url: '',
+            url: 'https://7lrul5ojk8.execute-api.us-east-2.amazonaws.com/beta/',
             headers: {
+                'Content-Type': "application/json"
+
 
             },
             data: JSON.stringify(datastream),
@@ -22,7 +24,7 @@ $(document).ready(function() {
             
         })
         
-    }
+    };
 
     $('input[name=reason]').click(function() {
        console.log('Radio Button clicked')
@@ -111,6 +113,8 @@ $(document).ready(function() {
            })
        }
        databaseUpdate(replies);
+       $(this).parent().attr('hidden','');
+       $(this).parent().next().removeAttr('hidden');
     });
    
 });
