@@ -106,6 +106,7 @@ $(document).ready(function() {
    
        console.log(replies);
        $(this).parent().attr('hidden','');
+       console.log($(this).parent().attr('id'));
        $(this).parent().next().removeAttr('hidden');
     });
     $('#submit-button').click(function() {

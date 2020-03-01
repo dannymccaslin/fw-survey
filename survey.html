@@ -10,17 +10,24 @@
     <body>
         <main>
             <header>
+                <img src="./images/frederickwater_header2.png">
                 <h1>Frederick Water Website Usability Survey</h1>
-                <p>We want to make improvements to our website, but those improvements are meaningless if they don't improve the user experience. We want to learn why you visit 
-                    frederickwater.com, whay you think works well, and what you think we need to improve. This survey will collect no personal information but may ask questions about demographics
-                    that can't be tied to any particular account or account holder, such as whether you own or rent your home and whether you have multiple accounts with us. We hope to use the 
-                    information gained from this survey to streamline our website and social media presence to make it easier for you to get to the information and services you need.
-                </p>
+                
                 <div class="clear"></div>
             </header>
             <article>
                 <form id="survey">
-                    <div id="reason" class='radio'>
+                    <div id="intro">
+                        <p>We want to make improvements to our website, but those improvements are meaningless if they don't improve the user experience. We want to learn why you visit 
+                            frederickwater.com, whay you think works well, and what you think we need to improve. This survey will collect no personal information but may ask questions about demographics
+                            that can't be tied to any particular account or account holder, such as whether you own or rent your home and whether you have multiple accounts with us. We hope to use the 
+                            information gained from this survey to streamline our website and social media presence to make it easier for you to get to the information and services you need.
+                        </p>
+                        
+                        <input type="button" class="next-button" id="intro-begin"  value="Begin">
+                        
+                    </div>
+                    <div id="reason" class='radio'hidden>
                         <p class="survey-question">What is the primary reason you visit frederickwater.com? </p>
                     <input type="radio" id="bill" name="reason" class="survey-question-option" required value="bill">
                     <label for="bill" class="survey-question-option-label">To view or pay my bill online</label><br>
