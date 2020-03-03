@@ -36,7 +36,7 @@ header h1 {
 /* classes */
 .charNum {
     display: inline;
-    align: left;
+    align-self : left;
     font-size: smaller;
     vertical-align: super;
 }
