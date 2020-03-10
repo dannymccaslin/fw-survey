@@ -11,7 +11,9 @@
     <body>
         <main>
             <header>
-                <img src="./images/frederickwater_header2.png">
+                <a href="https://www.frederickwater.com">
+                    <img src="./images/frederickwater_header2.png">
+                    </a>
                 <h1>Frederick Water Website Usability Survey</h1>
                 
                 <div class="clear"></div>
@@ -19,17 +21,18 @@
             <article>
                 <form id="survey">
                     <div id="intro">
-                        <p>We want to make improvements to our website, but those improvements are meaningless if they don't improve the user experience. We want to learn why you visit 
-                            frederickwater.com, whay you think works well, and what you think we need to improve. This survey will collect no personal information but may ask questions about demographics
+                        <p>We are always looking for ways to improve the user experience when visiting our website. To help us, we have put together a short survey to learn why you visit 
+                            frederickwater.com, what you think works well, and what you think we need to improve. This survey will collect no personal information but may ask questions about demographics
                             that can't be tied to any particular account or account holder, such as whether you own or rent your home and whether you have multiple accounts with us. We hope to use the 
                             information gained from this survey to streamline our website and social media presence to make it easier for you to get to the information and services you need.
                         </p>
+                        <p> This survey should take about 4 minutes to complete.</p>
                         
                         <input type="button" class="next-button" id="intro-begin"  value="Begin">
                         
                     </div>
                     <div id="reason" class='radio'hidden>
-                        <p class="survey-question">What is the primary reason you visit frederickwater.com? </p>
+                        <p class="survey-question">What is the primary reason you visit frederickwater.com? <span class="req">*Required</span></p>
                     <input type="radio" id="bill" name="reason" class="survey-question-option" required value="bill">
                     <label for="bill" class="survey-question-option-label">To view or pay my bill online</label><br>
                     <input type="radio" id="outage" name="reason" class="survey-question-option" value="outage">
@@ -49,11 +52,11 @@
                         <input type="text" class="survey-question-other textfield" maxlength="75" id="othertext-reason" >
                         <div class="charNum">75</div>
                     </div>
-                    <input type="button" class="next-button" id="reason-next" disabled="true" value="Next">
+                    <input type="button" class="next-button" id="reason-next" disabled="true" value="Next >">
                     </div>
 
                     <div id="wish" class='radio' hidden>
-                    <p class="survey-question">What do you wish frederickwater.com did better?</p>
+                    <p class="survey-question">What do you wish frederickwater.com did better? <span class="req">*Required</span></p>
                     <input type="radio" id="newstart" name="wish" class="survey-question-option" required value="newstart">
                     <label for="newstart" class="survey-question-option-label">Allow me to pay deposit while starting new service</label><br>
                     <input type="radio" id="outinfo" name="wish" class="survey-question-option" value="outinfo">
@@ -71,19 +74,22 @@
                         <input type="text" class="survey-question-other textfield" maxlength="75" id="othertext-wish" >
                         <div class="charNum">75</div>
                     </div>
+                    <input type="button" class="back-button" id="wish-back"  value="Back">
                     <input type="button" class="next-button" id="wish-next" disabled value="Next">
                     </div>
 
                     <div id="dislike" class="textbox" hidden>
-                    <p class="survey-question">What do you dislike about frederickwater.com?</p>
+                    <p class="survey-question">What don't you like about frederickwater.com? <span class="req">*Required</span></p>
                     <textarea id="dislike-text" class="like-dislike textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
-                    <div class="charNum">500</div>
+                    <div class="charNum">500</div><br>
+                    <input type="button" class="back-button" id="dislike-back" disabled="true" value="< Back">
                     <input type="button" class="next-button" id="dislike-next" disabled value="Next">
                     </div>
                     <div id="like" class="textbox" hidden>
-                    <p class="survey-question">What do you like about frederickwater.com?</p>
+                    <p class="survey-question">What do you like about frederickwater.com? <span class="req">*Required</span></p>
                     <textarea id="like-text" class="like-dislike textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
-                    <div class="charNum">500</div>
+                    <div class="charNum">500</div><br>
+                    <input type="button" class="back-button" id="like-back"  value=" Back">
                     <input type="button" class="next-button" id="like-next" disabled value="Next">
                     </div>
 
@@ -103,25 +109,28 @@
                     <input type="checkbox" id="facebook2" class="smcb" name="facebook" value="Facebook">
                     <label for="facebook2" class="survey-question-option-label">Facebook</label><br>
                     
-                    <p class="survey-question"> Would you like to see up on other social media sites?</p>
+                    <p class="survey-question"> Would you like to see Frederick Water on other social media sites?</p>
                     <input type="checkbox" id="instagram2" class="smcb" name="instagram" value="Instagram">
                     <label for="instagram2" class="survey-question-option-label">Instagram</label><br>
                     <input type="checkbox" id="youtube" class="smcb" name="youtube" value="YouTube">
                     <label for="youtube" class="survey-question-option-label">YouTube</label><br>
                     <br>
+                    <input type="button" class="back-button" id="social-back"  value=" Back">
                     <input type="button" class="next-button" id="social-next" value="Next">
                     </div>
 
                     <div id="sm_info" class="textbox" hidden>
                         <p class="survey-question">What kind of information would you like to receive from Frederick Water through social media?</p>
                         <textarea id="sm-info-text" class="sm-info-textfield textfield" cols="100" rows="5" maxlength="500"  wrap="soft"></textarea>
-                        <div class="charNum">500</div>
+                        <div class="charNum">500</div><br>
+                        <input type="button" class="back-button" id="sm-info-back"  value=" Back">
                         <input type="button" class="next-button" id="sm-info-next" value="Next">
                         </div>
                     
                     <div id="demo" hidden>
                     <label for="agerange">Choose your age range:</label><br>
                     <select id="agerange">
+                        <option value="blank">Click to select</option>
                         <option value="18-24">18-24</option>
                         <option value="25-32">25-32</option>
                         <option value="33-40">33-40</option>
@@ -134,22 +143,52 @@
 
                     <label for="rentown">Do your rent or own the property where you receive services from Frederick Water?</label><br>
                     <select id="rentown">
+                        <option value="blank">Click to select</option>
                         <option value="rent">Rent</option>
                         <option value="own">Own</option>
                     </select><br>
                     <br>
                     <label for="commres">Is this a commercial property, rental property, or residential service?</label><br>
                     <select id="commres">
+                        <option value="blank">Click to select</option>
                         <option value="commercial">Commercial</option>
                         <option value="rental">Rental Property</option>
                         <option value="residential">Residential</option>
                     </select><br>
                     <br>
-                    <label for="paperless">Would you be interested in a paperless billing option if it was available?</label>
-                    <select id="paperless">
+                    <label for="credit">Would you continue to pay your bill with a credit card if there were fees to do so?”</label><br>
+                    <select id="credit">
+                        <option value="blank">Click to select</option>
                         <option value="yes">Yes</option>
                         <option value="No">No</option>
-                    </select><br>
+                        </select>
+                    <br>
+                    <br>
+                    <label for="paperless">Have you signed up for the paperless billing option?</label><br>
+                    <select id="paperless">
+                        <option value="blank">Click to select</option>
+                        <option value="yes">Yes</option>
+                        <option value="No">No</option>
+                        </select>
+                    <br>
+                    <br>
+                        <label for="debit">Are you aware Frederick Water has a payment option to debit your bank account on the due date of your bill?</label><br>
+                        <select id="debit">
+                            <option value="blank">Click to select</option>
+                            <option value="yes">Yes</option>
+                            <option value="No">No</option>
+                            </select>
+                    <br><br>
+                    <label class="inv-q" hidden for="debit-opt">Have you signed up for this option?</label><br>
+                        <select class="inv-q" hidden id="debit-opt">
+                            <option value="blank">Click to select</option>
+                            <option value="yes">Yes</option>
+                            <option value="No">No</option>
+                            </select>
+                    <br>
+
+                    <br>
+                    <input type="button" class="back-button" id="submit-back"  value=" Back">
                     <input type="button" class='submit-button' id="submit-button" value="Submit">
                     
                 </div>

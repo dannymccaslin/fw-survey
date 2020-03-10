@@ -4,12 +4,19 @@ $(document).ready(function() {
         
     };
 
+    
     function stripchar(str) { //strip and replace characters that we don't want in text fields
         str = str.replace(/["']/g, '\\"');
         str = str.replace(/[&/#+()$~%:;*?<>{}]/g, ' ');
         return str;
     }
-
+    $('.back-button').click(function() {
+        console.log("Back Button Clicked!");
+        //replies.Remove(replies.keys.last());
+        console.log(replies);
+        $(this).parent().attr('hidden','');
+        $(this).parent().prev().removeAttr('hidden');
+    });
     function databaseUpdate(datastream) {
         $.ajax({
             method: 'POST',
@@ -43,6 +50,11 @@ $(document).ready(function() {
        }
    });
 
+   $('#debit').change(function() {
+         if ($('#debit').val() === "yes") {
+            $('.inv-q').removeAttr('hidden');
+        }
+    });
    $('#like-text').keyup(function() {
        l = this.value.length;
        if (l >= 5) {
@@ -63,7 +75,7 @@ $(document).ready(function() {
         } else {
             $(this).next().text(mlen-len + '/' + mlen);
             if (len >= (mlen - wlen)) {
-                $(this).next().toggleClass('.warn');
+                $(this).next().toggleClass('warn');
             }
         }
     });
@@ -81,6 +93,7 @@ $(document).ready(function() {
            $('#other-fill-wish').attr('hidden','');
        }
     });
+
 
     $('.next-button').click(function() {
        var parent = $(this).parent();
