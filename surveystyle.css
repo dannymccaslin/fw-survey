@@ -66,8 +66,6 @@ header h1 {
 }
 
 
-
-
 /* IDs */
 #other-fill-reason{
     width: 280px;
@@ -86,7 +84,7 @@ header h1 {
     padding: 0 70px 0 70px ;
     margin: 0 0 20px 0;
 }
-#intro-begin, #close, #submit-button, .next-button, .back-button {
+#intro-begin, #close, #submit-button, .next-buttontest your site against xss {
     
     background-color: rgb(27,60,109); /* Dark Blue from the Nav bar on the website */
     border: none;
@@ -111,3 +109,14 @@ header h1 {
     margin-left: 10%;
     font-family: 'Roboto Condensed','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.back-button {
+    background-color: #BFD633; /* Green from the Logo*/
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
